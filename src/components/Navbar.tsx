@@ -22,7 +22,7 @@ const StyledNavbar = styled.nav`
 `
 
 export const Navbar = () => {
-  window.ethereum.on('accountsChanged', async function (accounts) {
+  window.ethereum?.on('accountsChanged', async function (accounts) {
     setAccount(accounts[0])
   })
   const [account, setAccount] = useAtom(accountAtom)

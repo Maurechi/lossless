@@ -13,7 +13,7 @@ const StyledMainWrapper = styled.main`
 const MainWrapper: React.FC = ({ children }) => {
   const [, setAccount] = useAtom(accountAtom)
 
-  window.ethereum.on('accountsChanged', async function (accounts) {
+  window.ethereum?.on('accountsChanged', async function (accounts) {
     setAccount(accounts[0])
   })
 
