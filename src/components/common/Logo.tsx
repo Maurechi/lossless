@@ -7,9 +7,7 @@ const LogoImg = styled.img`
   width: 15rem;
 `
 const LogoLink = styled(NavLink)`
-  /* @media (max-width: ${({ theme }) => theme.media.sm}) {
-    display: none;
-  } */
+  z-index: 20;
 `
 
 const Logo = () => {

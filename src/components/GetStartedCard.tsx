@@ -23,7 +23,12 @@ const GetStartedCard = () => {
       width='100%'
       initial={{ x: 3000 }}
       animate={{ x: 0, maxWidth: 'fit-content' }}
-      exit={{ x: -1000, position: 'absolute', top: '17rem', maxWidth: '0px' }}
+      exit={{
+        x: -1000,
+        position: 'absolute',
+        top: `${window.innerWidth > 501 ? 'auto' : '17rem'}`,
+        maxWidth: '0px',
+      }}
       transition={{
         type: 'spring',
         damping: 30,

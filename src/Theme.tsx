@@ -47,7 +47,7 @@ export const lightTheme = {
     xl: '1440px',
     lg: '1114px',
     md: '944px',
-    sm: '480px',
+    sm: '501px',
   },
 }
 
