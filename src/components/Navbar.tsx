@@ -13,6 +13,7 @@ const StyledNavbar = styled.nav`
   width: 100%;
   z-index: 10;
   align-items: center;
+  background: linear-gradient(90deg, #f7f8bf, #f7f7f5 35%, #e2f1f5) no-repeat;
   justify-content: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyBorder};
   @media (min-width: ${({ theme }) => theme.media.sm}) {
