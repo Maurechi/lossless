@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'jotai'
+import { ethers } from 'ethers'
+import { Navbar } from './components/Navbar'
+import Theme from './Theme'
+import HomePage from './pages/HomePage'
+import { MainWrapper } from './components/common'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// lossless token address 0x6b3e2c303e3ae93fc558d1a8e4daedc95aaf7bae
+declare global {
+  interface Window {
+    ethereum: ethers.providers.ExternalProvider & ethers.providers.Web3Provider
+  }
 }
 
-export default App;
+const App = () => {
+  return (
+    <Provider>
+      <Router>
+        <Theme>
+          <Navbar />
+          <MainWrapper>
+            <Route path='/' exact component={HomePage} />
+          </MainWrapper>
+        </Theme>
+      </Router>
+    </Provider>
+  )
+}
+
+export default App
