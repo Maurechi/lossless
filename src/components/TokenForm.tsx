@@ -17,6 +17,7 @@ const TokenForm = () => {
   const [amount, setAmount] = useState<number | string>('')
   const [balance, setBalance] = useState('')
   const [name, setName] = useState<string>('')
+  const [symbol, setSymbol] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [sent, setSent] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
@@ -37,8 +38,10 @@ const TokenForm = () => {
         const [account] = await requestAccount()
         const balance = await contract.balanceOf(account)
         const contractName = await contract.name()
+        const contractSymbol = await contract.symbol()
         setBalance(ethers.utils.formatEther(balance))
         setName(contractName)
+        setSymbol(contractSymbol)
         setAccount(account)
       }
     } else {
@@ -167,7 +170,7 @@ const TokenForm = () => {
             }}
           >
             <Text align='center' color='white' size='1.6rem'>
-              Your Balance of {name}: {balance} Tokens
+              Your Balance of {name}: {balance} {symbol}
             </Text>
           </AnimatedBox>
         )}
