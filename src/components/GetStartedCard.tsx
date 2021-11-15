@@ -9,8 +9,12 @@ import Text from './common/Text'
 const GetStartedCard = () => {
   const [, setAccount] = useAtom(accountAtom)
   const onClick = async () => {
-    const [account] = await requestAccount()
-    setAccount(account)
+    if (window.ethereum) {
+      const [account] = await requestAccount()
+      setAccount(account)
+    } else {
+      window.open('https://metamask.io/')
+    }
   }
   return (
     <AnimatedBox
@@ -44,9 +48,12 @@ const GetStartedCard = () => {
         maxWidth='45rem'
         margin='2.4rem 0 3.2rem 0'
       >
-        Get started by connecting with Web3/Metamask!
+        'Get started by connecting with Web3/Metamask!'
       </Text>
-      <Button onClick={onClick} text='Connect with Metamask' />
+      <Button
+        onClick={onClick}
+        text={window.ethereum ? 'Connect with Metamask' : 'Download Metamask'}
+      />
     </AnimatedBox>
   )
 }
